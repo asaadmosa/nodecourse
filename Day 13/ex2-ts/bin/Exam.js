@@ -22,7 +22,7 @@ var Exam = /** @class */ (function () {
             if (value.correctindex == answers[index])
                 g++;
         });
-        return g;
+        return g / this.questions.length * 100;
     };
     return Exam;
 }());

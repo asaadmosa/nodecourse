@@ -24,6 +24,6 @@ export class Exam{
         this.questions.forEach((value, index) =>{
             if(value.correctindex== answers[index]) g++;
         });
-        return g;
+        return g /this.questions.length*100;
     }
 }
