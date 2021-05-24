@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Exam = void 0;
 var Exam = /** @class */ (function () {
-    function Exam(questions) {
-        this.questions = questions;
+    function Exam() {
+        this.questions = [];
     }
     Exam.prototype.addQuestion = function (ques) {
         this.questions.push(ques);

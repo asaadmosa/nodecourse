@@ -1,9 +1,7 @@
 import { Question } from "./Question";
 
 export class Exam{
-    constructor(
-        public questions : Question[]
-    ){}
+        private questions : Question[]=[];
 
     addQuestion(ques: Question): void{
         this.questions.push(ques);
