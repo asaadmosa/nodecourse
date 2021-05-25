@@ -1,0 +1,19 @@
+
+<div>
+  <label>a  </label>
+<input #aInput (input)="setKeyworda(aInput.value)" 
+    type="number" 
+    [disabled]="isBusy">
+    <label>   b  </label>
+<input #bInput (input)="setKeywordb(bInput.value)" 
+    type="number" 
+    [disabled]="isBusy">
+<button (click)="claculate()" [disabled]="isBusy">Go!</button>
+<img *ngIf="isBusy" 
+    src="https://thumbs.gfycat.com/RelievedSilentArcticwolf-max-1mb.gif">
+</div>
+<ul>
+    <li *ngFor="let res of results; let mispar = index">
+        {{res}}
+    </li>
+</ul>
