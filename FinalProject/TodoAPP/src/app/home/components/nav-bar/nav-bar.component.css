@@ -1,0 +1,11 @@
+mat-toolbar{
+    background-color: rgb(136, 186, 233);
+}
+
+button{
+    font-size: 25px;
+    color: black;
+    background-color: rgb(136, 186, 233);
+    border-style: none;
+    padding: 7px;
+}

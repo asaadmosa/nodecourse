@@ -1,10 +1,10 @@
 
 <div>
-  <label>a  </label>
+  <label>A  </label>
 <input #aInput (input)="setKeyworda(aInput.value)" 
     type="number" 
     [disabled]="isBusy">
-    <label>   b  </label>
+    <label>   B  </label>
 <input #bInput (input)="setKeywordb(bInput.value)" 
     type="number" 
     [disabled]="isBusy">
@@ -13,7 +13,7 @@
     src="https://thumbs.gfycat.com/RelievedSilentArcticwolf-max-1mb.gif">
 </div>
 <ul>
-    <li *ngFor="let res of results; let mispar = index">
+    <li *ngFor="let res of results">
         {{res}}
     </li>
 </ul>

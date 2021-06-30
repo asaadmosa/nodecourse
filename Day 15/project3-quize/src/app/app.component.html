@@ -1,0 +1,13 @@
+<div class="title-area">
+  QUIZE PROJECT
+</div>
+<div class="main">
+  <div class="presenter">
+    <app-question-presenter ></app-question-presenter>
+    <app-quiz-over *ngIf="isDone$ | async"></app-quiz-over>
+  </div>
+
+  <div class="summary">
+   <app-summary></app-summary>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<h2>ADD TODO LIST</h2>
+
+<form *ngIf="todoListForm" [formGroup]="todoListForm" (ngSubmit)="save()">
+<div>
+    <div>
+        <div>
+            capation
+        </div>
+        <div>
+            <input type="text" formControlName="Capation">
+        </div>
+    </div>
+
+    <div>
+        <div>
+            description
+        </div>
+        <div>
+            <input type="text" formControlName="Description">
+        </div>
+    </div>
+
+    <div>
+        <div>
+            imageUrl
+        </div>
+        <div>
+            <input type="text" formControlName="ImageUrl">
+        </div>
+    </div>
+    <div>
+        <div>
+            color
+        </div>
+        <div>
+            <input type="text" formControlName="Color">
+        </div>
+    </div>
+    <button [disabled]="todoListForm.invalid">save</button>
+</div>
+
+</form>

@@ -1,0 +1,13 @@
+<mat-grid-list cols="3" rows="3" rowHeight="50px">
+    <mat-grid-tile><mat-icon> format_list_bulleted</mat-icon></mat-grid-tile>
+    <mat-grid-tile><mat-icon>done_outline</mat-icon></mat-grid-tile>
+    <mat-grid-tile><mat-icon>hourglass_full</mat-icon></mat-grid-tile>
+
+    <mat-grid-tile>{{counter$ | async}}</mat-grid-tile>
+    <mat-grid-tile>{{counterItems$}}</mat-grid-tile>
+    <mat-grid-tile>{{counterActiveItems$}}</mat-grid-tile>
+    
+    <mat-grid-tile>lists</mat-grid-tile>
+    <mat-grid-tile>Todo Items</mat-grid-tile>
+    <mat-grid-tile>Active Items</mat-grid-tile>
+  </mat-grid-list>

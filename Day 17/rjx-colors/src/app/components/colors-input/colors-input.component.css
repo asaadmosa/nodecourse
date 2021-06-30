@@ -1,0 +1,13 @@
+:host {
+    display: grid;
+
+    grid-template-rows: 20 20 20;
+    grid-template-columns: 20 20 20;
+
+}
+
+div {
+    border: 1px solid gray;
+    margin: 4px;
+    border-radius: 8px;
+}

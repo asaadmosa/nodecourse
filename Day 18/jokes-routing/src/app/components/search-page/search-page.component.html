@@ -1,0 +1,6 @@
+<input #keyword type="string">
+<button (click)="search(keyword.value)">Search!</button>
+<div *ngFor="let caption of (captions$ | async); let i = index"
+>
+    {{i+1}}.{{caption}}
+</div>

@@ -1,0 +1,7 @@
+<div>
+RED <input #inputRed (input)="SetRed(inputRed.value)">
+GREEN <input #inputGreen (input)="SetGreen(inputGreen.value)">
+BLUE <input #inputBlue (input)="SetBlue(inputBlue.value)">
+</div>
+<div [style.background]=rgba(this.inputRed,this.inputGreen,this.inputBlue)> 
+</div>

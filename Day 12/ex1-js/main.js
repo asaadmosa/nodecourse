@@ -6,7 +6,7 @@ function calculator(a,b){
 
 calculator.prototype.add = function () {
     return this.a + this.b;
-};
+}
 calculator.prototype.sub= function (){
     return this.a - this.b;
 }
@@ -26,4 +26,6 @@ var c3=new calculator(6,11);
 c1.log();
 c2.log();
 
-setTimeout(c3.log,2000);
+setTimeout(function() {
+    c3.log();
+},2000);
