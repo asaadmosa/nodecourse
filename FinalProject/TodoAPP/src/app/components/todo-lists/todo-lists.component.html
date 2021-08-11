@@ -30,14 +30,14 @@
 <mat-grid-list cols="3">
     <ng-container *ngFor = "let tile of  todoLists$|async">
         <mat-grid-tile colspan=1>
-            <button mat-raised-button class="listButton" >
+            <button mat-raised-button class="listButton" [routerLink]="['/','lists',tile.id]">
                 <div><mat-icon class="iconColor">{{tile.imageUrl}}</mat-icon></div>
                 <div><h1>{{tile.capation}}</h1></div>
             </button>
         </mat-grid-tile>
     </ng-container>
     <mat-grid-tile colspan=1>
-        <button mat-raised-button class="listButton" >
+        <button mat-raised-button class="listButton" [routerLink]="['/','lists',-1,'add']">
             <h1>+</h1>
             <h1>New...</h1>
         </button>
