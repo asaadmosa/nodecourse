@@ -37,7 +37,7 @@ import {MatIconModule} from '@angular/material/icon';
     HeaderComponent,
     NavBarComponent,
     TitleComponent,
-    HomeComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

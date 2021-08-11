@@ -11,16 +11,16 @@ import { ReactiveTodoService } from 'src/app/core/services/reactive-todo.service
 export class HomeComponent implements OnInit {
 
   counter$!: Observable<number>;
-  counterItems$!: string;
-  counterActiveItems$!: string;
+  counterItems$!: Promise<string>;
+  counterActiveItems$!: Promise<string>;
   constructor(private todoService: ReactiveTodoService){}
   ngOnInit(): void {
     this.counter$ =this.todoService.todoLists$.pipe(
       map(list=>list.length),
       distinctUntilChanged());
 
-    this.counterItems$=this.todoService.todoListsItems$.toString();
-    this.counterActiveItems$=this.todoService.todoListsActiveItems$.toString();
+    this.counterItems$= this.todoService.todoListsItemsTotal$.then(value => value.toString());
+    this.counterActiveItems$=this.todoService.todoListsActiveItemsTotal$.then(value => value.toString());
     this.todoService.loadTodoLists();
   }
 

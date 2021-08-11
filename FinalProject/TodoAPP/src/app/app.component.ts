@@ -10,12 +10,8 @@ import { ReactiveTodoService } from './core/services/reactive-todo.service';
 })
 export class AppComponent implements OnInit{
   
-  counter$!: Observable<number>;
-  constructor(private todoService: ReactiveTodoService){}
+  constructor(){}
   ngOnInit(): void {
-    this.counter$ =this.todoService.todoLists$.pipe(
-      map(list=>list.length),
-      distinctUntilChanged())
-      this.todoService.loadTodoLists();
+
   }
 }

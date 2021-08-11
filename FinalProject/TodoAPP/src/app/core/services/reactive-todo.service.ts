@@ -10,25 +10,22 @@ import { environment } from 'src/environments/environment';
 })
 export class ReactiveTodoService {
   private itemListSubject=new BehaviorSubject<TodoList[]>([]);
+  private itemsListSubject=new BehaviorSubject<TodoItem[]>([]);
+
   private serverUrl: string;
 
   get todoLists$():Observable<TodoList[]>{
     return this.itemListSubject.asObservable();
   }
 
-  get todoListsItems$():number{
-    var counterItems=0;
-    this.itemListSubject.forEach((items) => {
-      items.forEach((list)=>counterItems+=list.items.$values.length)
-    });
+  get todoListsItemsTotal$():Promise<String>{
+    var counterItems= this.httpClient.get<String>(`${this.serverUrl}todos/TodoGroup/ItemsNumber`).toPromise();
+    console.log(counterItems);
     return counterItems;
   }
 
-  get todoListsActiveItems$():number{
-    var counterItems=0;
-    this.itemListSubject.forEach((items) => {
-      items.forEach((list)=>counterItems+=list.items.$values.filter(item=>item.isCompleted!==false).length)
-    });
+  get todoListsActiveItemsTotal$():Promise<String>{
+    var counterItems= this.httpClient.get<String>(`${this.serverUrl}todos/TodoGroup/ActiveItemsNumber`).toPromise();
     return counterItems;
   }
 
@@ -39,7 +36,6 @@ export class ReactiveTodoService {
     return todoOObj;
   }
   
-
   getTodoList(groupId: string): Observable<TodoList>{
     const result =this.httpClient.get<TodoList>(`${this.serverUrl}todos/TodoGroup/${groupId}`);
     return result;

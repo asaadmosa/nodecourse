@@ -17,7 +17,6 @@ export class TodoListsComponent implements OnInit {
     this.todoLists$=this.todoService.todoLists$
   }
 
-
   async deleteTodoList(id : string){
     try{
       await this.todoService.deleteTodoList(id);
