@@ -1,4 +1,53 @@
 <h1 style="color:purple;">Lists > {{todoList.capation}}</h1>
-<mat-icon style="font-size: 80px;">{{todoList.imageUrl}}</mat-icon>
 
- 
+<div class="wrapper">
+    <div class="icon">
+        <mat-icon style="font-size: 160px;">{{todoList.imageUrl}}</mat-icon>
+    </div>
+    <div class="desc">
+        <p>{{todoList.description}}</p>
+    </div>
+    <div class="nav">
+        <mat-toolbar>
+            <button mat-button [routerLink]="['/','lists',-1,'add']">NewList......</button>
+            <button mat-button [routerLink]="['/','lists',todoList.id,'edit']">Edit......</button>
+            <button mat-button color="warn" (click)="deleteTodoList(todoList.id)">Delete</button>
+        </mat-toolbar>
+    </div>
+    <div class="items">
+        <mat-grid-list cols="1">
+            <ng-container *ngFor="let item of  todoListItems">
+                <div *ngIf="item.isCompleted; else elseBlock">
+                    <mat-grid-tile colspan=1>
+                        <section class="tp-section">
+                            <mat-checkbox [disabled]=true class="tp-margin">
+                                {{item.name}}
+                            </mat-checkbox>
+                        </section>
+                    </mat-grid-tile>
+                </div>
+                <ng-template #elseBlock>
+                    <mat-grid-tile colspan=1>
+                        <section class="tp-section">
+                            <mat-checkbox [disabled]=false class="tp-margin">
+                                {{item.name}}
+                            </mat-checkbox>
+                        </section>
+                    </mat-grid-tile>
+                </ng-template>
+            </ng-container>
+            <mat-grid-tile>
+                <section>
+                    <mat-checkbox [disabled]=false class="tp-margin">
+                        <mat-form-field *ngIf="todoItemForm" [formGroup]="todoItemForm" (ngSubmit)="save()">
+                            <input type="text" formControlName="name">
+                            <button [disabled]="todoItemForm.invalid">
+                                <mat-icon>add_box</mat-icon>
+                            </button>
+                        </mat-form-field>
+                    </mat-checkbox>
+                </section>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</div>

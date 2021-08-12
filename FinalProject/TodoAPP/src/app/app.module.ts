@@ -22,6 +22,7 @@ import { NavBarComponent } from './home/components/nav-bar/nav-bar.component';
 import { TitleComponent } from './home/components/title/title.component';
 import { HomeComponent } from './home/components/home/home.component';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatGridListModule,
     MatToolbarModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
