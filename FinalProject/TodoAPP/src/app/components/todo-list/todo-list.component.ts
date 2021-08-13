@@ -43,6 +43,7 @@ export class TodoListComponent implements OnInit {
   async deleteTodoList(id : string){
     try{
       await this.todoService.deleteTodoList(id);
+      this.router.navigate(['/','lists']);
     }catch(error){
       alert(error);
     }
@@ -65,7 +66,7 @@ export class TodoListComponent implements OnInit {
 
   async save(){
     await this.todoService.addNewTodoItem(this.todoItemForm.value);
-    this.router.navigate(['/','items']);
+    await this.router.navigate(['/','items']);
   }
 
 

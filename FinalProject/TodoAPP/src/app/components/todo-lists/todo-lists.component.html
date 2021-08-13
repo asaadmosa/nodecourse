@@ -1,31 +1,3 @@
-<!-- <table>
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>capation</th>
-            <th>description</th>
-            <th>imageUrl</th>
-            <th>color</th>
-            <th>&nbsp;</th>
-            <th>&nbsp;</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of todoLists$|async">
-            <td>{{item.id}}</td>
-            <td>{{item.capation}}</td>
-            <td>{{item.description}}</td>
-            <td>{{item.imageUrl}}</td>
-            <td>{{item.color}}</td>
-            <td>
-                <button (click)="deleteTodoList(item.id)">Delete</button>
-                <button [routerLink]="['/','lists',item.id,'edit']">Edit</button>
-            </td>
-        </tr>
-    </tbody>
-</table> -->
-
-
 <h1 class="listTitle">Lists</h1>
 <mat-grid-list cols="3">
     <ng-container *ngFor = "let tile of  todoLists$|async">

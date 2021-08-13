@@ -15,6 +15,7 @@ export class TodoListsComponent implements OnInit {
 
   ngOnInit(): void {
     this.todoLists$=this.todoService.todoLists$
+    this.todoService.loadTodoLists();
   }
 
   async deleteTodoList(id : string){
