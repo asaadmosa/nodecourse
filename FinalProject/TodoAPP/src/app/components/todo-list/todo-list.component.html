@@ -17,37 +17,20 @@
     <div class="items">
         <mat-grid-list cols="1">
             <ng-container *ngFor="let item of  todoListItems">
-                <div *ngIf="item.isCompleted; else elseBlock">
-                    <mat-grid-tile colspan=1>
-                        <section class="tp-section">
-                            <mat-checkbox [disabled]=true class="tp-margin">
-                                {{item.name}}
-                            </mat-checkbox>
-                        </section>
-                    </mat-grid-tile>
-                </div>
-                <ng-template #elseBlock>
-                    <mat-grid-tile colspan=1>
-                        <section class="tp-section">
-                            <mat-checkbox [disabled]=false class="tp-margin">
-                                {{item.name}}
-                            </mat-checkbox>
-                        </section>
-                    </mat-grid-tile>
-                </ng-template>
-            </ng-container>
-            <mat-grid-tile>
-                <section>
-                    <mat-checkbox [disabled]=false class="tp-margin">
-                        <mat-form-field *ngIf="todoItemForm" [formGroup]="todoItemForm" (ngSubmit)="save()">
-                            <input type="text" formControlName="name">
-                            <button [disabled]="todoItemForm.invalid">
-                                <mat-icon>add_box</mat-icon>
-                            </button>
-                        </mat-form-field>
+                <mat-grid-tile colspan=1>
+                    <mat-checkbox [disabled]=false>
+                        {{item.name}}
                     </mat-checkbox>
-                </section>
-            </mat-grid-tile>
+                </mat-grid-tile>
+            </ng-container>
         </mat-grid-list>
+    </div>
+    
+    <div class="addItem">
+        <form *ngIf="todoItemForm" [formGroup]="todoItemForm" (ngSubmit)="save()">
+                <input type="checkbox" formControlName="isCompleted">
+                <input type="text" formControlName="name">
+                <button [disabled]="todoItemForm.invalid">save</button>
+        </form>
     </div>
 </div>

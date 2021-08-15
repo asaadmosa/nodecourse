@@ -6,6 +6,7 @@ body {
      display: grid;
      grid-gap: 10px;
      grid-template-columns: 200px 200px 200px 200px 100px;
+     grid-template-rows: 50px 50px auto 100px;
      background-color: #fff;
      color: #444;
    }
@@ -20,10 +21,20 @@ body {
      grid-row: 1 / span 1;
    }
    .nav {
-     grid-column: 2/span 4;
+     grid-column: 2/span 2;
      grid-row: 2 / span 1 ;
    }
    .items {
-     grid-column: 1/span 5;
-    grid-row: 3;
+     margin:100px;
+     grid-column: 1/span 2;
+     grid-row: 3/span 1;
+/*     display: flex;
+    justify-content: flex-start;
+    align-items: center; */
+   }
+
+   .addItem{
+    margin-left:100px;
+    grid-column: 1/span 3;
+    grid-row: 4/span 1;
    }

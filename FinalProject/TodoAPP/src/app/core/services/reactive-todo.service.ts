@@ -62,7 +62,7 @@ export class ReactiveTodoService {
   }
 
   async addNewTodoItem(todoItem: TodoItem){
-    await this.httpClient.post<TodoItem>(`${this.serverUrl}todos/TodoGroup/{todoItem.currentListId}/Items`,todoItem).toPromise();
+    await this.httpClient.post<TodoItem>(`${this.serverUrl}todos/TodoGroup/${todoItem.currentListId}/Items`,todoItem).toPromise();
     await this.loadTodoLists();
   }
 

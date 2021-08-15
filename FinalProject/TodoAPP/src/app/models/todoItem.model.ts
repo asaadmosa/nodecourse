@@ -4,7 +4,6 @@
     }
 
     export interface CurrentList {
-        $id: string;
         id: string;
         capation: string;
         description: string;

@@ -4,7 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { filter, map, switchMap } from 'rxjs/operators';
 import { ReactiveTodoService } from 'src/app/core/services/reactive-todo.service';
-import { Items, TodoItem, TodoList } from 'src/app/models/todo.model';
+import { TodoItem, TodoList } from 'src/app/models/todo.model';
+import { TodoItemObj } from 'src/app/models/todoItem.model';
 
 @Component({
   selector: 'app-todo-list',
@@ -12,66 +13,63 @@ import { Items, TodoItem, TodoList } from 'src/app/models/todo.model';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  todoList!:TodoList;
-  todoListItems!:TodoItem[];  
+  todoList!: TodoList;
+  todoListItems!: TodoItem[];
   todoItemForm!: FormGroup;
+  todoListForm!: FormGroup;
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private activatedRoute :ActivatedRoute ,
+    private activatedRoute: ActivatedRoute,
     private todoService: ReactiveTodoService) { }
 
   ngOnInit(): void {
-    
     const result = this.activatedRoute.params
-    .pipe(
-      map(t=> t.id),//map according to id
-      filter(t=> t),//only if there is todoList
-      switchMap(id=>this.todoService.getTodoList(id))//switch to observable of product
-      ).subscribe(list=>this.todoList=list);
-      console.log(this.todoList.id);
-      this.buildForm();
-      const result1 = this.activatedRoute.params
       .pipe(
-        map(t=> t.id),//map according to id
-        filter(t=> t),//only if there is todoList
-        switchMap(id=>this.todoService.getTodoList(id))//switch to observable of product
-        ).subscribe(list=>this.todoListItems=list.items.$values);
-        
+        map(t => t.id),//map according to id
+        filter(t => t),//only if there is todoList
+        switchMap(id => this.todoService.getTodoList(id))//switch to observable of product
+      ) .subscribe(o=>{
+        this.buildForm(o);
+      });
   }
 
-  async deleteTodoList(id : string){
-    try{
+
+
+  async deleteTodoList(id: string) {
+    try {
       await this.todoService.deleteTodoList(id);
-      this.router.navigate(['/','lists']);
-    }catch(error){
+      this.router.navigate(['/', 'lists']);
+    } catch (error) {
       alert(error);
     }
   }
 
 
-
-
-  buildForm(){
+  buildForm(t: TodoList) {
+    this.todoList=t;
     this.todoItemForm = this.formBuilder.group(
       {
         Id: TodoListComponent.newGuid(),
-        name: ['',[Validators.required]],
+        name: '',
         description: '',
         isCompleted: false,
-        currentListId: this.todoList.id
+        currentListId: t.id,
+        currentList: t
       }
     );
   }
 
-  async save(){
+  async save() {
+    console.log(this.todoItemForm.value);
     await this.todoService.addNewTodoItem(this.todoItemForm.value);
-    await this.router.navigate(['/','items']);
+    await this.router.navigate(['/', 'lists']);
   }
 
 
   static newGuid() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
       var r = Math.random() * 16 | 0,
         v = c == 'x' ? r : (r & 0x3 | 0x8);
       return v.toString(16);
