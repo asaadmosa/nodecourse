@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { filter, map, switchMap } from 'rxjs/operators';
 import { ReactiveTodoService } from 'src/app/core/services/reactive-todo.service';
-import { TodoItem, TodoList } from 'src/app/models/todo.model';
-import { TodoItemObj } from 'src/app/models/todoItem.model';
+import { Items, TodoItem, TodoList } from 'src/app/models/todo.model';
+import { TodoItemsComponent } from '../todo-items/todo-items.component';
 
 @Component({
   selector: 'app-todo-list',
@@ -32,8 +33,10 @@ export class TodoListComponent implements OnInit {
         switchMap(id => this.todoService.getTodoList(id))//switch to observable of product
       ) .subscribe(o=>{
         this.buildForm(o);
+        this.todoList=o;
+        this.todoListItems=o.items.$values;
       });
-  }
+    }
 
 
 

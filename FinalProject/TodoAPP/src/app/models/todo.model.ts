@@ -3,7 +3,6 @@ export interface CurrentList {
 }
 
 export interface TodoItem {
-    $id: string;
     id: string;
     name: string;
     description: string;
@@ -18,7 +17,6 @@ export interface Items {
 }
 
 export interface TodoList {
-    $id: string;
     id: string;
     capation: string;
     description: string;

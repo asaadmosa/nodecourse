@@ -18,7 +18,7 @@
         <mat-grid-list cols="1">
             <ng-container *ngFor="let item of  todoListItems">
                 <mat-grid-tile colspan=1>
-                    <mat-checkbox [disabled]=false>
+                    <mat-checkbox [disabled]="item.isCompleted">
                         {{item.name}}
                     </mat-checkbox>
                 </mat-grid-tile>
@@ -30,7 +30,7 @@
         <form *ngIf="todoItemForm" [formGroup]="todoItemForm" (ngSubmit)="save()">
                 <input type="checkbox" formControlName="isCompleted">
                 <input type="text" formControlName="name">
-                <button [disabled]="todoItemForm.invalid">save</button>
+                <button [disabled]="todoItemForm.invalid">+</button>
         </form>
     </div>
 </div>

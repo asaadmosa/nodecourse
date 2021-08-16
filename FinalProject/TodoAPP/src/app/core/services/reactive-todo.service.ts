@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { TodoList, TodoObj } from 'src/app/models/todo.model';
+import { Items, TodoList, TodoObj } from 'src/app/models/todo.model';
 import { TodoItem, TodoItemObj } from 'src/app/models/todoItem.model';
 import { environment } from 'src/environments/environment';
 
@@ -41,8 +41,8 @@ export class ReactiveTodoService {
     return result;
   }
 
-  getTodoItems(groupId: string): Observable<TodoItemObj>{
-    const result =this.httpClient.get<TodoItemObj>(`${this.serverUrl}todos/TodoGroup/${groupId}/Items`);
+  getTodoItems(groupId: string): Observable<Items>{
+    const result =this.httpClient.get<Items>(`${this.serverUrl}todos/TodoGroup/${groupId}/Items`);
     return result;
   }
 
@@ -62,7 +62,7 @@ export class ReactiveTodoService {
   }
 
   async addNewTodoItem(todoItem: TodoItem){
-    await this.httpClient.post<TodoItem>(`${this.serverUrl}todos/TodoGroup/${todoItem.currentListId}/Items`,todoItem).toPromise();
+    await this.httpClient.post<TodoItem>(`${this.serverUrl}todos/item`,todoItem).toPromise();
     await this.loadTodoLists();
   }
 
